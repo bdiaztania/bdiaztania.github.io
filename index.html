@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tania Diaz-Bazan | Yale SOM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #5a9fbf;
+            --blue-dark: #3d7a9e;
+            --blue-pale: #eaf3f8;
+            --blue-wash: #f5f9fc;
+            --warm-accent: #c49a52;
+            --warm-accent-pale: #faf5ec;
+            --slate: #64748b;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --font-display: 'Source Serif 4', Georgia, serif;
+            --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 18px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* TOP NAV */
+        .topnav {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 2rem;
+        }
+
+        .topnav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 54px;
+            gap: 0.25rem;
+        }
+
+        .name-bar {
+            background: var(--blue-pale);
+            padding: 0.6rem 2rem;
+            position: sticky;
+            top: 54px;
+            z-index: 99;
+        }
+
+        .name-bar-inner {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--blue-dark);
+        }
+
+        .topnav a {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .topnav a:hover {
+            color: var(--blue-dark);
+            background: var(--blue-pale);
+        }
+
+        .topnav a.active {
+            color: var(--blue-dark);
+            background: var(--blue-pale);
+        }
+
+        /* MOBILE NAV */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 4px 0;
+            border-radius: 1px;
+        }
+
+        /* MAIN */
+        .main {
+            padding: 2.5rem 2rem 4rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HOME */
+        .welcome {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .hero-info {
+            padding-top: 0.25rem;
+        }
+
+        .hero-info h1 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-role {
+            font-size: 0.95rem;
+            color: var(--blue);
+            font-weight: 500;
+            margin-bottom: 0.15rem;
+        }
+
+        .hero-affiliations {
+            font-size: 0.88rem;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+
+        .about-text a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .about-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* JOB MARKET PAPER */
+        .jmp-box {
+            margin-top: 2rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--blue-wash);
+            border-left: 3px solid var(--warm-accent);
+            border-radius: 4px;
+        }
+
+        .jmp-label {
+            font-size: 0.75rem;
+            color: var(--warm-accent);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .jmp-title {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .jmp-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .jmp-title a:hover {
+            color: var(--blue);
+        }
+
+        .jmp-abstract {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* SECTION HEADERS */
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* PAPER LIST */
+        .paper {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .paper:last-child {
+            border-bottom: none;
+        }
+
+        .paper-title {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.45;
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--blue);
+        }
+
+        .paper-meta {
+            font-size: 0.85rem;
+            color: var(--slate);
+            margin-top: 0.2rem;
+        }
+
+        .paper-award {
+            font-size: 0.84rem;
+            color: var(--warm-accent);
+            font-weight: 500;
+        }
+
+        .paper-links {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .paper-links a {
+            font-size: 0.78rem;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.2rem 0.55rem;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .paper-links a:hover {
+            background: var(--blue-pale);
+            border-color: var(--blue);
+        }
+
+        .paper-abstract {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            display: none;
+            text-align: justify;
+        }
+
+        .paper-abstract.open {
+            display: block;
+        }
+
+        .abstract-toggle {
+            font-size: 0.78rem;
+            color: var(--blue);
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 0.2rem 0.55rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: var(--font-body);
+            transition: all 0.2s;
+        }
+
+        .abstract-toggle:hover {
+            background: var(--blue-pale);
+            border-color: var(--blue);
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-block h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-block p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .contact-block a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .contact-block a:hover {
+            text-decoration: underline;
+        }
+
+        /* CV */
+        .cv-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--blue-pale);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .cv-link:hover {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            html { font-size: 16px; }
+
+            .topnav { padding: 0 1rem; }
+
+            .topnav-inner {
+                justify-content: space-between;
+            }
+
+            .topnav-links {
+                display: none;
+                position: absolute;
+                top: 54px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                padding: 0.5rem 1rem;
+                flex-direction: column;
+            }
+
+            .topnav-links.open {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .main {
+                padding: 1.5rem 1.25rem 3rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+
+            .hero-photo img {
+                width: 160px;
+                height: 200px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="topnav">
+        <div class="topnav-inner">
+            <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="topnav-links" id="topnav-links">
+                <a href="#home" class="active" onclick="showSection('home', this)">Home</a>
+                <a href="#research" onclick="showSection('research', this)">Research</a>
+                <a href="#cv" onclick="showSection('cv', this)">CV</a>
+                <a href="#contact" onclick="showSection('contact', this)">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="name-bar">
+        <div class="name-bar-inner">Tania Diaz-Bazan</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-photo">
+                    <img src="images/2025-10-09-Tania Diaz-Bazan-41-Edit.jpg" alt="Tania Diaz-Bazan">
+                </div>
+                <div class="hero-info">
+                    <div class="welcome">Welcome!</div>
+                    <div class="about-text" style="margin-top: 0.75rem;">
+                        I am a PhD Candidate in Finance at <a href="https://som.yale.edu/">Yale University</a>. My research focuses on <strong>climate adaptation</strong>, <strong>household behavior</strong>, and <strong>political economy</strong>.<br><br><strong>I will be on the 2026-2027 Job Market.</strong> Please do not hesitate to <a href="mailto:tania.diaz-bazan@yale.edu">contact me</a>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="jmp-box">
+                <div class="jmp-label">Job Market Paper</div>
+                <div class="jmp-title"><a href="https://www.dropbox.com/scl/fi/7vbimcjlu4g4uq9j9l0ho/main_tdb.pdf?rlkey=yg2kjyimfae95v63m6a4m5b81&dl=0" target="_blank">Political Orientation and Household Climate Adaptation: Evidence from Building Permits</a></div>
+                <div class="jmp-abstract">This paper examines how political party affiliation influences household investment decisions in climate adaptation measures in Florida. Using data on 13 million building permits, I study partisan differences in wind-adaptation investments such as wind-resistant windows, storm shutters, and structural reinforcements. I find that the rate at which registered Republicans invest in wind-adaptation measures is 4&ndash;7% lower than that of registered Democrats, after controlling for income, property characteristics, and demographics. This partisan gap is equivalent to two to three income deciles in economic significance, correlates with stronger political identity, and widened during the Trump administration.</div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <h2 class="section-title">Research</h2>
+
+            <div class="paper">
+                <div class="paper-title"><a href="https://www.dropbox.com/scl/fi/7vbimcjlu4g4uq9j9l0ho/main_tdb.pdf?rlkey=yg2kjyimfae95v63m6a4m5b81&dl=0" target="_blank">Political Orientation and Household Climate Adaptation: Evidence from Building Permits</a></div>
+                <div class="paper-meta">April 2026</div>
+                <div class="paper-award">Best PhD Poster Award, Baruch-JFQA Climate Finance and Sustainability Conference</div>
+                <div class="paper-links">
+                    <a href="https://www.dropbox.com/scl/fi/7vbimcjlu4g4uq9j9l0ho/main_tdb.pdf?rlkey=yg2kjyimfae95v63m6a4m5b81&dl=0" target="_blank">PDF</a>
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+                </div>
+                <div class="paper-abstract">This paper examines how political party affiliation influences household investment decisions in climate adaptation measures in Florida. Using data on 13 million building permits, I study partisan differences in wind-adaptation investments such as wind-resistant windows, storm shutters, and structural reinforcements. I find that the rate at which registered Republicans invest in wind-adaptation measures is 4&ndash;7% lower than that of registered Democrats, after controlling for income, property characteristics, and demographics. This partisan gap is equivalent to two to three income deciles in economic significance, correlates with stronger political identity, and widened during the Trump administration.</div>
+            </div>
+
+            <div class="paper">
+                <div class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5199360" target="_blank">Household Adaptation and Climate Beliefs: Evidence from Building Permits</a></div>
+                <div class="paper-meta">March 2025</div>
+                <div class="paper-links">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5199360" target="_blank">SSRN</a>
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+                </div>
+                <div class="paper-abstract">This paper analyzes 152 million building permits to categorize household protections against wildfires, hurricanes, and floods. The research demonstrates that adaptation correlates with climate risk exposure and shows that wildfire and hurricane-related permits are more frequent precisely where people are more worried about climate change. These findings provide large-scale evidence on how climate beliefs translate into household-level adaptation behavior.</div>
+            </div>
+
+            <div class="paper">
+                <div class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2506219" target="_blank">Measuring Inequality from Top to Bottom</a></div>
+                <div class="paper-meta">September 2014</div>
+                <div class="paper-links">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2506219" target="_blank">SSRN</a>
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+                </div>
+                <div class="paper-abstract">This paper presents a methodology combining household survey data with tax records to construct comprehensive income distributions. Applied to Colombia, the approach addresses the well-known limitations of each data source: surveys underrepresent top incomes while tax records miss the bottom of the distribution. The combined methodology yields a complete picture of income inequality from top to bottom.</div>
+            </div>
+        </section>
+
+        <!-- CV Section -->
+        <section id="cv" class="section">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">
+                You can download my most recent CV below.
+            </p>
+            <a href="https://www.dropbox.com/scl/fi/f1zf9eqd1brn04xwe78p2/tania_diaz_bazan_2025.pdf?rlkey=of13b0f3o85jolv3q9enkbrlo&dl=0" target="_blank" class="cv-link">Download CV (PDF)</a>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-block">
+                    <h3>Email</h3>
+                    <p><a href="mailto:tania.diaz-bazan@yale.edu">tania.diaz-bazan@yale.edu</a></p>
+                </div>
+                <div class="contact-block">
+                    <h3>Mailing Address</h3>
+                    <p>
+                        Yale School of Management<br>
+                        165 Whitney Avenue<br>
+                        New Haven, CT 06520
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function showSection(id, link) {
+            document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.topnav a').forEach(function(a) { a.classList.remove('active'); });
+            if (link) link.classList.add('active');
+            // Close mobile nav if open
+            document.getElementById('topnav-links').classList.remove('open');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleNav() {
+            document.getElementById('topnav-links').classList.toggle('open');
+        }
+
+        function toggleAbstract(btn) {
+            var paper = btn.closest('.paper');
+            var abstract = paper.querySelector('.paper-abstract');
+            abstract.classList.toggle('open');
+            btn.textContent = abstract.classList.contains('open') ? 'Hide Abstract' : 'Abstract';
+        }
+
+        window.addEventListener('hashchange', function() {
+            var id = location.hash.slice(1);
+            var link = document.querySelector('.topnav a[href="#' + id + '"]');
+            if (link) showSection(id, link);
+        });
+
+        if (location.hash) {
+            var id = location.hash.slice(1);
+            var link = document.querySelector('.topnav a[href="#' + id + '"]');
+            if (link) showSection(id, link);
+        }
+    </script>
+</body>
+</html>
