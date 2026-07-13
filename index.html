@@ -51,9 +51,16 @@
         .topnav-inner {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
             height: 54px;
             gap: 0.25rem;
+        }
+
+        .topnav-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--blue-dark);
         }
 
         .name-bar {
@@ -450,6 +457,7 @@
     <!-- Top Navigation -->
     <nav class="topnav">
         <div class="topnav-inner">
+            <div class="topnav-name">Tania Diaz-Bazan</div>
             <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -463,10 +471,6 @@
             </div>
         </div>
     </nav>
-
-    <div class="name-bar">
-        <div class="name-bar-inner">Tania Diaz-Bazan</div>
-    </div>
 
     <!-- Main Content -->
     <div class="main">
